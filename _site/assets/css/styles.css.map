@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"styles.scss",
+		"_sass/main.scss"
+	],
+	"sourcesContent": [
+		"@import \"main\";\n",
+		".current {\n\tcolor: green;\n}\n\nbody {\n\tfont-family: Optima, sans-serif;\n\tfont-size: 16pt;\n}\n"
+	],
+	"names": [],
+	"mappings": "ACAA,AAAA,QAAQ,CAAC,EACR,KAAK,EAAE,KAAK,GACZ;;AAED,AAAA,IAAI,CAAC,EACJ,WAAW,EAAE,kBAAkB,EAC/B,SAAS,EAAE,IAAI,GACf"
+}
