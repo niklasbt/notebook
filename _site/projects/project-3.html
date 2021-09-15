@@ -1,4 +1,26 @@
 <!doctype html>
+
+<!-- Enable latex -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+        inlineMath: [['$','$']],
+        processEscapes: true},
+        jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+        extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+        TeX: {
+        extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+        equationNumbers: {
+        autoNumber: "AMS"
+        }
+        }
+        });
+         </script>
+<!-- End latex section -->
+
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -21,6 +43,97 @@
 		</a>
 	
 </nav>
+<script src="/assets/js/lunr.js"></script>
+
+<script>
+
+var documents = [{
+    "id": 0,
+    "url": "/contents.html",
+    "title": "Contents",
+    "body": "Table of Contents	{% for post in site. posts %}					[{{ post. date | date_to_string }}] {{ post. title }}: 			{% endfor %}"
+    }, {
+    "id": 1,
+    "url": "/",
+    "title": "Home",
+    "body": "Most recent entries	{% for post in site. posts limit: 5 %}					[{{ post. date | date_to_string }}] {{ post. title }}: 			{{ post. excerpt }}			{% endfor %}"
+    }, {
+    "id": 2,
+    "url": "/projects.html",
+    "title": "Projects",
+    "body": "Projects	{% for project in site. projects %}					{{ project. name }}: 			{{ project. excerpt | markdownify }} 			{% endfor %}"
+    }, {
+    "id": 3,
+    "url": "/2021/09/15/sample-reaction.html",
+    "title": "My reaction",
+    "body": "2021/09/15 - References: Reagents:           Reagent 1   +   Reagent 2   $\rightarrow$   Product         MW   MW1       MW2       MWProduct       Equiv   Equiv1       Equiv2               mmol   mmol1       mmol2               g   g1       g2       Theory: –       mL   mL1       mL2               $\rho$   rho1       rho2           Procedure: Notes: "
+    }, {
+    "id": 4,
+    "url": "/2018/08/22/kiwis.html",
+    "title": "This is the title",
+    "body": "2018/08/22 - This is another entry about my second project. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+    }, {
+    "id": 5,
+    "url": "/2018/08/21/apples.html",
+    "title": "Apples",
+    "body": "2018/08/21 - This is an entry relating to my second project. "
+    }, {
+    "id": 6,
+    "url": "/2018/08/20/bananas.html",
+    "title": "Bananas",
+    "body": "2018/08/20 - This is an entry relating to my first project. "
+    }];
+
+var idx = lunr(function () {
+    this.ref('id')
+    this.field('title')
+    this.field('body')
+
+    documents.forEach(function (doc) {
+        this.add(doc)
+    }, this)
+});
+function lunr_search(term) {
+    document.getElementById('lunrsearchresults').innerHTML = '<ul></ul>';
+    if(term) {
+        document.getElementById('lunrsearchresults').innerHTML = "<p>Search results for '" + term + "'</p>" + document.getElementById('lunrsearchresults').innerHTML;
+        //put results on the screen.
+        var results = idx.search(term);
+        if(results.length>0){
+            //console.log(idx.search(term));
+            //if results
+            for (var i = 0; i < results.length; i++) {
+                // more statements
+                var ref = results[i]['ref'];
+                var url = documents[ref]['url'];
+                var title = documents[ref]['title'];
+                var body = documents[ref]['body'].substring(0,160)+'...';
+                document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML + "<li class='lunrsearchresult'><a href='" + url + "'><span class='title'>" + title + "</span><br /><span class='body'>"+ body +"</span><br /><span class='url'>"+ url +"</span></a></li>";
+            }
+        } else {
+            document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = "<li class='lunrsearchresult'>No results found...</li>";
+        }
+    }
+    return false;
+}
+</script>
+<style>
+    #lunrsearchresults {padding-top: 0.2rem;}
+    .lunrsearchresult {padding-bottom: 1rem;}
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+<form onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Search via Lunr.js" />
+</form>
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
 
 		<h1>My third project</h1>
 <h2></h2>
@@ -35,6 +148,6 @@
   
   
 </ul>
- 
+
 	</body>
 </html>

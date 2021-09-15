@@ -7,8 +7,8 @@
 	],
 	"sourcesContent": [
 		"@import \"main\";\n",
-		".current {\n\tcolor: green;\n}\n\nbody {\n\tfont-family: Optima, sans-serif;\n\tfont-size: 16pt;\n}\n"
+		".current {\n\tcolor: green;\n}\n\nbody {\n\tfont-family: Verdana, sans-serif;\n\tfont-size: 12pt;\n\tmax-width: 720px;\n\tmargin-left: 10em;\n\tmargin-right: 10em;\n}\n\nimg {\n\tmax-width: 720px;\n\tdisplay: block;\n\tmargin: 0 auto;\n}\n\ntable {\n  border: thin solid black;\n  border-collapse: collapse;\n  padding: 0.4rem;\n\tmargin-left: auto;\n\tmargin-right: auto;\n}\n\ntable thead th { border-bottom: 1px solid #000; }\n\nth, td {\n\tpadding: 0.4rem;\n}\n\nblockquote {\n  background: #f9f9f9;\n  border-left: 10px solid #ccc;\n  margin: 1.5em 10px;\n  padding: 0.5em 10px;\n}\nblockquote:before {\n  color: #ccc;\n  font-size: 4em;\n  line-height: 0.1em;\n  margin-right: 0.25em;\n  vertical-align: -0.4em;\n}\nblockquote p {\n  display: inline;\n}\n"
 	],
 	"names": [],
-	"mappings": "ACAA,AAAA,QAAQ,CAAC,EACR,KAAK,EAAE,KAAK,GACZ;;AAED,AAAA,IAAI,CAAC,EACJ,WAAW,EAAE,kBAAkB,EAC/B,SAAS,EAAE,IAAI,GACf"
+	"mappings": "ACAA,AAAA,QAAQ,CAAC,EACR,KAAK,EAAE,KAAK,GACZ;;AAED,AAAA,IAAI,CAAC,EACJ,WAAW,EAAE,mBAAmB,EAChC,SAAS,EAAE,IAAI,EACf,SAAS,EAAE,KAAK,EAChB,WAAW,EAAE,IAAI,EACjB,YAAY,EAAE,IAAI,GAClB;;AAED,AAAA,GAAG,CAAC,EACH,SAAS,EAAE,KAAK,EAChB,OAAO,EAAE,KAAK,EACd,MAAM,EAAE,MAAM,GACd;;AAED,AAAA,KAAK,CAAC,EACJ,MAAM,EAAE,gBAAgB,EACxB,eAAe,EAAE,QAAQ,EACzB,OAAO,EAAE,MAAM,EAChB,WAAW,EAAE,IAAI,EACjB,YAAY,EAAE,IAAI,GAClB;;AAED,AAAA,KAAK,CAAC,KAAK,CAAC,EAAE,CAAC,EAAE,aAAa,EAAE,cAAc,GAAI;;AAElD,AAAA,EAAE,EAAE,EAAE,CAAC,EACN,OAAO,EAAE,MAAM,GACf;;AAED,AAAA,UAAU,CAAC,EACT,UAAU,EAAE,OAAO,EACnB,WAAW,EAAE,eAAe,EAC5B,MAAM,EAAE,UAAU,EAClB,OAAO,EAAE,UAAU,GACpB;;AACD,AAAA,UAAU,CAAC,MAAM,CAAC,EAChB,KAAK,EAAE,IAAI,EACX,SAAS,EAAE,GAAG,EACd,WAAW,EAAE,KAAK,EAClB,YAAY,EAAE,MAAM,EACpB,cAAc,EAAE,MAAM,GACvB;;AACD,AAAA,UAAU,CAAC,CAAC,CAAC,EACX,OAAO,EAAE,MAAM,GAChB"
 }
