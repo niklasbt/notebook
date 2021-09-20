@@ -36,7 +36,7 @@ def listFiles(list,type):
             print('  '+str(k)+': '+list[k])
 
 def save_entry(title,short_title,project,body):
-    save_path = '../_posts/'
+    save_path = '_posts/'
     header = ([
         '---\n',
         'title: '+title+'\n',
@@ -67,8 +67,8 @@ class badTemplate(Exception):
 
 ### Code here ##################################################################
 
-projects = getFiles('../_projects','project') # Get list of projects
-templates = getFiles('templates','template') # Get list of templates
+projects = getFiles('_projects','project') # Get list of projects
+templates = getFiles('lib/templates','template') # Get list of templates
 body = []
 
 # Print projects and query user
@@ -94,7 +94,7 @@ while True:
 # If a new project is to be created
 if projectNo == 0:
     print('New project!')
-    exec(open('project.py').read())
+    exec(open('lib/project.py').read())
     projName = short_name
 else:
     projName = projects[projectNo]
@@ -131,7 +131,7 @@ if templateNo == 0:
 # Otherwise, use the chosen template
 while True:
     try:
-        importedTemplate = importlib.import_module('templates.'+templates[templateNo])
+        importedTemplate = importlib.import_module('lib.templates.'+templates[templateNo])
         body = importedTemplate.get_body()
         if not all(type(l) is str for l in body):
             body = []

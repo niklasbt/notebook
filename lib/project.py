@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-save_path = '../_projects/'
+save_path = '_projects/'
 
 name = input("\n Project name: ")
 short_name = input(" Project nickname: ")

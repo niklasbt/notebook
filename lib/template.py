@@ -2,6 +2,7 @@
 import os
 import sys
 import textwrap
+import re
 
 ### Functions ##################################################################
 
@@ -11,7 +12,7 @@ def getTemplate(path):
     return(template)
 
 def saveTemplate(filename,template):
-    with open('templates/'+filename+'.py','w') as outfile:
+    with open('lib/templates/'+filename+'.py','w') as outfile:
         outfile.write(textwrap.dedent('''\
             def get_body():
                 body = []
@@ -37,6 +38,7 @@ else:
     path = sys.argv[1]
     template = getTemplate(path)
 
-filename = path.split('.')[0]
+#filename = path.split('.')[0]
+filename = re.split('\.|/',path)[-2]
 
 saveTemplate(filename,template)

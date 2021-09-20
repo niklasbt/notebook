@@ -16,13 +16,15 @@ The landing page of the notebook at `index.html` serves as a brief table of cont
 
 ### Creating projects and entries
 
-At the moment, I envision a workflow based around `projects`. To create a project, use the helper script `lib/project.py` which will ask for a project name (`name`), a project nickname (`short_name`; which is the tag used to label entries as belonging to the project), and a short project description. This will create a project file `_projects/short_name.md`, which will be listed under the `Projects` page in the notebook.
+At the moment, I envision a workflow based around `projects`, where each entry is assigned to a particular project. Project and entry creation is centralized in the helper script `note.py`, which calls upon the content creation scripts in the `lib` folder.
 
-Alternatively, use the helper script `lib/entry.py` and select option `0: New project` to create a new project along with its first entry. The `lib/entry.py` script can be used to create new entries assigned to existing projects as well. This script will ask for a long a short title for the entry (`title` and `short_title`), and will automatically create the markdown file `_posts/YYYY-MM-DD-short_title.md`.
+When you create a project, the program will ask for a project name (`name`), a project nickname (`short_name`; which is the tag used to label entries as belonging to the project), and a short project description. This will create a project file `_projects/short_name.md`, which will be listed under the `Projects` page in the notebook.
+
+Alternatively, when creating a new entry, you can choose option `0: New project` to create a new project along with its first entry. New entries assigned to existing projects as well. When creating an entry, the program will ask for a long and a short title for the entry (`title` and `short_title`), and will automatically create the markdown file `_posts/YYYY-MM-DD-short_title.md`.
 
 #### Templates
 
-You can also create custom entry templates, if you plan on creating cookiecutter-type entries. Simply write a markdown file with the desired boilerplate and then run the `lib/template.py` script on it, which will create a template script in `lib/templates` which will be appended to the list of available templates when using `lib/entry.py`.
+You can also create custom entry templates, if you plan on creating cookiecutter-type entries. Simply write a markdown file with the desired boilerplate and then select `2: New template`, from `note.py`, which will create a template script in `lib/templates` that will be appended to the list of available templates when creating entries.
 
 Alternatively, you can create your own template manually and save it in the `lib/templates` folder. The template must be a python script containing the `get_body()` function (which is called by `lib/entry.py`):
 
